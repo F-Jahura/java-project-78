@@ -1,15 +1,24 @@
 package hexlet.code;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class App {
+
+
     public static void main(String[] args) {
         System.out.println(sum());
+
+        System.out.println(multiply());
+
+        System.out.println(divide());
     }
 
     public static int sum() {
-        int a =  5;
-        int b = 3;
-        return 8;
+        return 5 + 3;
+    }
+    public static int multiply() {
+        return 3 * 3;
+    }
+
+    public static int divide() {
+        return 5 - 3;
     }
 }
