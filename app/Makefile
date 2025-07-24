@@ -16,7 +16,4 @@ sonar:
 lint:
 	./gradlew checkstyleMain
 
-run:
-	./gradlew run --args="\"src/test/resources/filepath1.json\" \"src/test/resources/filepath2.json\""
-
 .PHONY: build
