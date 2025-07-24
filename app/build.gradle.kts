@@ -90,7 +90,7 @@ tasks.withType<Test> {
 
 sonar {
     properties {
-        property("sonar.projectKey", "F-Jahura_java-project-71")
+        property("sonar.projectKey", "F-Jahura_java-project-78")
         property("sonar.organization", "f-jahura")
         property("sonar.host.url", "https://sonarcloud.io")
         property ("sonar.login", "${System.getenv("SONAR_TOKEN")}")
