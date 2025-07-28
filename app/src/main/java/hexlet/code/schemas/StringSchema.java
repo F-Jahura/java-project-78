@@ -26,7 +26,6 @@ public class StringSchema extends Schema {
         if (text != null && !value.contains(text)) {
             return false;
         }
-
         return true;
     }
 

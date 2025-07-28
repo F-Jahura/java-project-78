@@ -31,6 +31,7 @@ val picocliVersion = "4.7.7"
 val jacksonDatabindVersion = "2.13.4.2"
 val commonsIoVersion = "2.14.0"
 val jacksonDataformatYamlVersion = "2.13.3"
+val validatorVersion = "1.10.0"
 
 dependencies {
     testImplementation(platform("org.junit:junit-bom:$junitBomVersion"))
@@ -41,7 +42,7 @@ dependencies {
     implementation("commons-io:commons-io:$commonsIoVersion")
     implementation("info.picocli:picocli:$picocliVersion")
     implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
-    implementation("commons-validator:commons-validator:1.10.0")
+    implementation("commons-validator:commons-validator:$validatorVersion")
 
     annotationProcessor("info.picocli:picocli-codegen:$picocliVersion")
 }
