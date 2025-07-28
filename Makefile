@@ -15,3 +15,6 @@ sonar:
 
 lint:
 	make -C app lint
+
+run:
+	make -C app run

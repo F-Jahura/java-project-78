@@ -41,6 +41,7 @@ dependencies {
     implementation("commons-io:commons-io:$commonsIoVersion")
     implementation("info.picocli:picocli:$picocliVersion")
     implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
+    implementation("commons-validator:commons-validator:1.10.0")
 
     annotationProcessor("info.picocli:picocli-codegen:$picocliVersion")
 }

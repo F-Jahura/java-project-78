@@ -16,4 +16,7 @@ sonar:
 lint:
 	./gradlew checkstyleMain
 
+run:
+	./gradlew run
+
 .PHONY: build
