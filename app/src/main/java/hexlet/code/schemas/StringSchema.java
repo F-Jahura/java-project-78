@@ -1,6 +1,6 @@
 package hexlet.code.schemas;
 
-public class StringSchema extends Schema {
+public class StringSchema extends BaseSchema<String> {
     private boolean notEmpty = false;
     private int min;
     private String text;
@@ -9,6 +9,7 @@ public class StringSchema extends Schema {
         return this;
     }
 
+    @SuppressWarnings("java:S1126")
     @Override
     public boolean isValid(String value) {
         if (value == null) {
