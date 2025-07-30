@@ -7,7 +7,7 @@ public class NumberSchema extends BaseSchema<Integer> {
     private int rangeMin;
     private int rangeMax;
 
-    public NumberSchema required() {
+    public final NumberSchema required() {
         notEmpty = true;
         return this;
     }
