@@ -1,13 +1,13 @@
 package hexlet.code.schemas;
 
-public class NumberSchema extends BaseSchema<Integer> {
+public final class NumberSchema extends BaseSchema<Integer> {
     private boolean notEmpty = false;
     private boolean shouldBePositive = false;
     private boolean shouldBeInRange = false;
     private int rangeMin;
     private int rangeMax;
 
-    public final NumberSchema required() {
+    public NumberSchema required() {
         notEmpty = true;
         return this;
     }
