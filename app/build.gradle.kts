@@ -1,5 +1,5 @@
 plugins {
-    application
+    java
     jacoco
     id("org.sonarqube") version "6.2.0.5505"
     checkstyle
@@ -13,17 +13,6 @@ repositories {
     mavenCentral()
 }
 
-application {
-    mainClass.set("hexlet.code.App")
-}
-
-tasks.jar {
-    manifest {
-        attributes(
-                "Main-Class" to "hexlet.code.App"
-        )
-    }
-}
 
 val junitBomVersion = "5.9.1"
 val commonsLangVersion = "3.17.0"

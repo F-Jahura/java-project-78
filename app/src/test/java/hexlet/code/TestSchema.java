@@ -6,8 +6,6 @@ import hexlet.code.schemas.NumberSchema;
 import hexlet.code.schemas.StringSchema;
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,21 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TestSchema {
     private final Validator validator = new Validator();
-
-    @Test
-    public void testMain() {
-        PrintStream originalOut = System.out;
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
-        App.main(new String[]{});
-
-        String output = outContent.toString();
-        assertTrue(output.contains("true"));
-        assertTrue(output.contains("false"));
-
-        System.setOut(originalOut);
-    }
     @Test
     void testStringDefaultIsValid() {
         StringSchema schema = validator.string();
