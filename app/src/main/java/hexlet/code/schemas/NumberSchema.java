@@ -9,12 +9,6 @@ public final class NumberSchema extends BaseSchema<Integer> {
         return this;
     }
 
-    @SuppressWarnings("java:S1126")
-    @Override
-    public boolean isValid(Integer value) {
-        return super.isValid(value);
-    }
-
     public NumberSchema positive() {
         Predicate<Integer> notNull = Objects::isNull;
         Predicate<Integer> greaterThanZero = value -> value > 0;

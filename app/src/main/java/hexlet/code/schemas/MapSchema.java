@@ -10,11 +10,6 @@ public final class MapSchema<T> extends BaseSchema<Map<String, T>> {
         return this;
     }
 
-    @Override
-    public boolean isValid(Map<String, T> value) {
-        return super.isValid(value);
-    }
-
     public MapSchema<T> sizeof(int size) {
         Predicate<Map<String, T>> mapSize = value -> value.size() == size;
         addCheck("size must be equal to specified value", mapSize);

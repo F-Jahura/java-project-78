@@ -8,12 +8,6 @@ public final class StringSchema extends BaseSchema<String> {
         return this;
     }
 
-    @SuppressWarnings("java:S1126")
-    @Override
-    public boolean isValid(String value) {
-        return super.isValid(value);
-    }
-
     public StringSchema minLength(int min) {
         Predicate<String> greaterThanMin = value -> value.length() > min;
         addCheck("range", greaterThanMin);
