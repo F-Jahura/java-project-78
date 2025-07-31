@@ -72,7 +72,7 @@ class TestSchema {
     }
 
     @Test
-    void testRequiredRules() {
+    void testNumberRequiredRules() {
         NumberSchema schema = validator.number().required();
         assertFalse(schema.isValid(null));
         assertTrue(schema.isValid(10));
@@ -80,7 +80,7 @@ class TestSchema {
     }
 
     @Test
-    void testRangeRules() {
+    void testNumberRangeRules() {
         NumberSchema schema = validator.number().range(5, 10);
         assertTrue(schema.isValid(10));
         assertFalse(schema.isValid(4));
@@ -102,19 +102,21 @@ class TestSchema {
 
     @Test
     void testMapSizeRules() {
-        MapSchema schema = validator.map();
-        var data = new HashMap<String, String>();
+        var schema = validator.map();
+        Map<String, String> data = new HashMap<>();
         data.put("key1", "value1");
         assertTrue(schema.isValid(data));
         schema.sizeof(2);
         assertFalse(schema.isValid(data));
         data.put("key2", "value2");
         assertTrue(schema.isValid(data));
+        data.put("key3", "value3");
+        assertFalse(schema.isValid(data));
     }
 
     @Test
     void testMapShapeRules() {
-        MapSchema schema = validator.map().required().sizeof(2);
+        var schema = validator.map().required().sizeof(2);
 
         Map<String, BaseSchema<String>> schemas = new HashMap<>();
         schemas.put("lastName", validator.string().required().minLength(2));
@@ -124,7 +126,6 @@ class TestSchema {
         human1.put("firstName", "John");
         human1.put("lastName", "Smith");
         assertTrue(schema.isValid(human1));
-
 
         Map<String, String> human2 = new HashMap<>();
         human2.put("firstName", "John");

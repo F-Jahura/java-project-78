@@ -1,56 +1,37 @@
 package hexlet.code.schemas;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+import java.util.function.Predicate;
 
-public final class MapSchema extends BaseSchema<Map<String, String>> {
-    private boolean notEmpty = false;
-    private boolean shouldBeInSize = false;
-    private Map<String, String> data = new HashMap<>();
-    private int mapSize = data.size();
-
-    private Map<String, BaseSchema<String>> mapShcemas = new HashMap<>();
-    private boolean shouldBeInShape = false;
-
-    public MapSchema required() {
-        notEmpty = true;
+public final class MapSchema<T> extends BaseSchema<Map<String, T>> {
+    public MapSchema<T> required() {
+        addCheck("should not be null", Objects::nonNull);
         return this;
     }
 
     @Override
-    public boolean isValid(Map<String, String> value) {
-        if (value == null) {
-            return !notEmpty;
-        }
+    public boolean isValid(Map<String, T> value) {
+        return super.isValid(value);
+    }
 
-        if (shouldBeInSize && value.size() != mapSize) {
-            return false;
-        }
+    public MapSchema<T> sizeof(int size) {
+        Predicate<Map<String, T>> mapSize = value -> value.size() == size;
+        addCheck("size must be equal to specified value", mapSize);
+        return this;
+    }
 
-        if (shouldBeInShape) {
-            for (Map.Entry<String, BaseSchema<String>> entry : mapShcemas.entrySet()) {
+
+    public MapSchema shape(Map<String, BaseSchema<T>> schemas) {
+        addCheck("shape", map -> {
+            return schemas.entrySet().stream().allMatch(entry -> {
                 String key = entry.getKey();
-                BaseSchema<String> schema = entry.getValue();
-
-                boolean isValid = value.containsKey(key) && schema.isValid(value.get(key));
-                if (!isValid) {
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
-
-    public MapSchema sizeof(int n) {
-        this.mapSize = n;
-        this.shouldBeInSize = true;
+                BaseSchema<T> schema = entry.getValue();
+                T s = map.get(key);
+                return s != null && schema.isValid(s);
+            });
+        });
         return this;
-    }
 
-    public MapSchema shape(Map<String, BaseSchema<String>> schemas) {
-        this.mapShcemas = schemas;
-        this.shouldBeInShape = true;
-        return this;
     }
 }

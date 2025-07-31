@@ -1,42 +1,28 @@
 package hexlet.code.schemas;
 
+import java.util.function.Predicate;
+
 public final class StringSchema extends BaseSchema<String> {
-    private boolean notEmpty = false;
-    private int min;
-    private String text;
     public StringSchema required() {
-        notEmpty = true;
+        addCheck("should not be null", s -> s != null && !s.isEmpty());
         return this;
     }
 
     @SuppressWarnings("java:S1126")
     @Override
     public boolean isValid(String value) {
-        if (value == null) {
-            return !notEmpty;
-        }
-
-        if (notEmpty && value.isEmpty()) {
-            return false;
-        }
-
-        if (value.length() < min) {
-            return false;
-        }
-
-        if (text != null && !value.contains(text)) {
-            return false;
-        }
-        return true;
+        return super.isValid(value);
     }
 
-    public StringSchema minLength(int n) {
-        this.min = n;
+    public StringSchema minLength(int min) {
+        Predicate<String> greaterThanMin = value -> value.length() > min;
+        addCheck("range", greaterThanMin);
         return this;
     }
 
     public StringSchema contains(String subString) {
-        this.text = subString;
+        Predicate<String> contain = text -> text.contains(subString);
+        addCheck("shouldContainsText", contain);
         return this;
     }
 }

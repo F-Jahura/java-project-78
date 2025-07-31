@@ -1,44 +1,29 @@
 package hexlet.code.schemas;
 
-public final class NumberSchema extends BaseSchema<Integer> {
-    private boolean notEmpty = false;
-    private boolean shouldBePositive = false;
-    private boolean shouldBeInRange = false;
-    private int rangeMin;
-    private int rangeMax;
+import java.util.Objects;
+import java.util.function.Predicate;
 
+public final class NumberSchema extends BaseSchema<Integer> {
     public NumberSchema required() {
-        notEmpty = true;
+        addCheck("should not be null", Objects::nonNull);
         return this;
     }
 
     @SuppressWarnings("java:S1126")
     @Override
     public boolean isValid(Integer value) {
-        if (value == null) {
-            return !notEmpty;
-        }
-
-        if (shouldBePositive && value <= 0) {
-            return false;
-        }
-
-        if (shouldBeInRange && (value < rangeMin || value > rangeMax)) {
-            return false;
-        }
-
-        return true;
+        return super.isValid(value);
     }
 
     public NumberSchema positive() {
-        shouldBePositive = true;
+        Predicate<Integer> notNull = Objects::isNull;
+        Predicate<Integer> greaterThanZero = value -> value > 0;
+        addCheck("should be positive", notNull.or(greaterThanZero));
         return this;
     }
 
     public NumberSchema range(int min, int max) {
-        this.rangeMin = min;
-        this.rangeMax = max;
-        this.shouldBeInRange = true;
+        addCheck("range", value -> value >= min && value <= max);
         return this;
     }
 }
