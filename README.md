@@ -12,10 +12,13 @@
 1.  **Запустить JShell:** Запустите интерпретатор JShell, который предоставляет интерактивную среду для выполнения кода на Java.
 2.  **Импортировать классы:** Импортируйте необходимые классы из репозитория, чтобы использовать их функциональности в JShell. Например:
   
-    **import hexlet.code.Validator;**
-    **import hexlet.code.schemas.StringSchema;**
-    **import hexlet.code.schemas.NumberSchema;**
-    **import hexlet.code.schemas.MapSchema;**
+    import hexlet.code.Validator;
+
+    import hexlet.code.schemas.StringSchema;
+
+    import hexlet.code.schemas.NumberSchema;
+
+    import hexlet.code.schemas.MapSchema;
     
 3.  **Создать объект валидатора:** Создайте объект валидатора с помощью конструктора Validator():
 
