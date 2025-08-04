@@ -29,7 +29,6 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonDatabindVersion")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonDataformatYamlVersion")
     implementation("commons-io:commons-io:$commonsIoVersion")
-    implementation("info.picocli:picocli:$picocliVersion")
     implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
     implementation("commons-validator:commons-validator:$validatorVersion")
 

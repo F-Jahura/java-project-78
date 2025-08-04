@@ -5,14 +5,14 @@ import java.util.function.Predicate;
 
 public final class NumberSchema extends BaseSchema<Integer> {
     public NumberSchema required() {
-        addCheck("should not be null", Objects::nonNull);
+        addCheck("notNullOrEmpty", Objects::nonNull);
         return this;
     }
 
     public NumberSchema positive() {
         Predicate<Integer> notNull = Objects::isNull;
         Predicate<Integer> greaterThanZero = value -> value > 0;
-        addCheck("should be positive", notNull.or(greaterThanZero));
+        addCheck("positive", notNull.or(greaterThanZero));
         return this;
     }
 
