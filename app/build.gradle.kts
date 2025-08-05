@@ -13,26 +13,14 @@ repositories {
     mavenCentral()
 }
 
-
 val junitBomVersion = "5.9.1"
-val commonsLangVersion = "3.17.0"
-val picocliVersion = "4.7.7"
-val jacksonDatabindVersion = "2.13.4.2"
-val commonsIoVersion = "2.14.0"
-val jacksonDataformatYamlVersion = "2.13.3"
 val validatorVersion = "1.10.0"
 
 dependencies {
     testImplementation(platform("org.junit:junit-bom:$junitBomVersion"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 
-    implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonDatabindVersion")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonDataformatYamlVersion")
-    implementation("commons-io:commons-io:$commonsIoVersion")
-    implementation("org.apache.commons:commons-lang3:$commonsLangVersion")
     implementation("commons-validator:commons-validator:$validatorVersion")
-
-    annotationProcessor("info.picocli:picocli-codegen:$picocliVersion")
 }
 
 tasks.test {
