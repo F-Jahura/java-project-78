@@ -12,7 +12,7 @@
 Для использования репозитория через JShell, вам нужно выполнить следующие шаги:
 1.  **Запустить JShell:** Запустите интерпретатор JShell, который предоставляет интерактивную среду для выполнения кода на Java.
 2.  **Импортировать классы:** Импортируйте необходимые классы из репозитория, чтобы использовать их функциональности в JShell. Например:
-    ```
+    ```java
     import hexlet.code.Validator;
     import hexlet.code.schemas.StringSchema;
     import hexlet.code.schemas.NumberSchema;
@@ -20,21 +20,25 @@
     ```
     
 3.  **Создать объект валидатора:** Создайте объект валидатора с помощью конструктора Validator():
-
+    ```java
     Validator validator = new Validator();
+    ```
 
 4.  **Настроить схемы валидации:** Настройте схемы валидации, вызвав соответствующие методы объекта валидатора.     
 
     **Для валидации строк:**
-
+    ```java 
     StringSchema stringSchema = validator.string().required().minLength(4);
+    ```
 
     **Для валидации чисел:**
-
+    ```java
     NumberSchema numberSchema = validator.number().required().positive().range(5, 10);
+    ```
 
     **Для валидации объектов типа Map:**
-
+    ```java
     MapSchema mapSchema = validator.map().required().sizeof(2);
+    ```
 
 5.  **Проверить данные:** Проверьте корректность данных, вызвав метод isValid() на соответствующей схеме валидации. 
