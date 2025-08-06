@@ -6,13 +6,13 @@ import java.util.function.Predicate;
 
 public final class MapSchema<T> extends BaseSchema<Map<String, T>> {
     public MapSchema<T> required() {
-        addCheck("notNullOrEmpty", Objects::nonNull);
+        addCheck("empty", Objects::nonNull);
         return this;
     }
 
     public MapSchema<T> sizeof(int size) {
         Predicate<Map<String, T>> mapSize = value -> value.size() == size;
-        addCheck("sizeEqualsValue", mapSize);
+        addCheck("size", mapSize);
         return this;
     }
 
